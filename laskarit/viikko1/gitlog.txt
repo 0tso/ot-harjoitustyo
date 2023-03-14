@@ -1,0 +1,88 @@
+commit 480cc635643c0574d4fb8fc217b502a7a1460d03
+Author: Otso <24369914+0tso@users.noreply.github.com>
+Date:   Mon Mar 13 23:30:12 2023 +0200
+
+    file2 nimetty uudelleen file22 ja file1 poistettu
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 8cf4aeeff3d96b31c77322b9e02426de456585a1
+Author: Otso <24369914+0tso@users.noreply.github.com>
+Date:   Mon Mar 13 23:28:05 2023 +0200
+
+    tiedostoja luotu
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 159f34e766813933f6c49d1a066a07f9b2a41ffe
+Author: Otso <24369914+0tso@users.noreply.github.com>
+Date:   Mon Mar 13 23:20:24 2023 +0200
+
+    muutoksia tehty 'git add -p' -komennolla
+
+ eka.txt    | 1 +
+ kolmas.txt | 1 -
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+
+commit 1fc4fd9322a6efa568205d47499e287c8cd95289
+Author: Otso <24369914+0tso@users.noreply.github.com>
+Date:   Mon Mar 13 23:15:54 2023 +0200
+
+    tiedosto.txt uudelleennimetty eka.txt:ksi
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit edce4052c7616efbf5856ff1df97c25a159a8ffb
+Author: Otso <24369914+0tso@users.noreply.github.com>
+Date:   Mon Mar 13 23:15:24 2023 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 65c33984e8f7d0b6b9363b8e43970715be1321b5
+Author: Otso <24369914+0tso@users.noreply.github.com>
+Date:   Mon Mar 13 22:46:35 2023 +0200
+
+    Paljon muutoksia
+
+ kolmas.txt               | 1 +
+ stuff/jokin_tiedosto.txt | 0
+ toinen.txt               | 1 +
+ 3 files changed, 2 insertions(+)
+
+commit 8b914f545785354eb1edf26be2f7f6c8a59a91b8
+Author: Otso <24369914+0tso@users.noreply.github.com>
+Date:   Mon Mar 13 22:43:42 2023 +0200
+
+    kolmas.txt lisätty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 168f1b3b6744a66ff2293704276401fcfb4623c2
+Author: Otso <24369914+0tso@users.noreply.github.com>
+Date:   Mon Mar 13 22:38:19 2023 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 70ac1bf59e93083e31dec42f8dcb223107f679c0
+Author: Otso <24369914+0tso@users.noreply.github.com>
+Date:   Mon Mar 13 22:37:26 2023 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
