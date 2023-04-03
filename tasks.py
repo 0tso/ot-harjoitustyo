@@ -2,4 +2,4 @@ from invoke import task
 
 @task
 def start(ctx):
-    print("Startng application...")
+    ctx.run("python src/app.py", pty=True)
