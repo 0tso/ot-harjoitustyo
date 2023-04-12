@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.8"
 pygame = "^2.3.0"
 invoke = "^2.0.0"
+thorpy = "^1.8.1"
 
 [build-system]
 requires = ["poetry-core"]
