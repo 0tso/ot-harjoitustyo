@@ -1,13 +1,15 @@
 import thorpy
-from . import main_view
+from . import main_menu
+
+DEFAULT_MARGIN = 5
 
 thorpy.style.FONT_SIZE = 15
-thorpy.style.MARGINS = (5, 5, 5, 5)
+thorpy.style.MARGINS = (DEFAULT_MARGIN, DEFAULT_MARGIN, DEFAULT_MARGIN, DEFAULT_MARGIN)
 
 def init():
     global menu
 
-    box = main_view.create()
+    box = main_menu.create()
     menu = thorpy.Menu(elements=[box])
 
 def process_event(event):
