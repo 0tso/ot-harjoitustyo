@@ -30,6 +30,8 @@ while running:
     # drawing
     window.clear()
     
+    gui.manager.blit()
+
     window.blit()
 
 
