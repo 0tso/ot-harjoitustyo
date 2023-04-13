@@ -1,4 +1,5 @@
 import thorpy
+from . import manager
 
 menu_functions  = []
 menu_boxes      = []
@@ -27,6 +28,7 @@ def open_menu(id: int):
     box = menu_functions[id](width)
     menu_boxes[id] = box
     menu_box.add_element(box)
+    manager.add_element(box)
     update_menu()
 
 def minimize():
@@ -35,7 +37,9 @@ def minimize():
     if active_menu == 2:
         return
     
-    menu_box.remove_elements([menu_boxes[active_menu]])
+    element = menu_boxes[active_menu]
+    menu_box.remove_elements([element])
+    manager.remove_element(element)
     
     active_menu = 2
     update_menu()

@@ -25,7 +25,6 @@ while running:
         if event.type == pygame.QUIT:
             running = False
             break
-        
         gui.manager.process_event(event)
     
     # drawing
