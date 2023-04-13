@@ -1,6 +1,7 @@
 import pygame
 import time
-import window, gui.manager
+from . import window, gui
+from .gui import manager
 
 TICK_RATE = 144
 

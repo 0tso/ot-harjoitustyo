@@ -2,4 +2,4 @@ from invoke import task
 
 @task
 def start(ctx):
-    ctx.run("python src/app.py", pty=True)
+    ctx.run("python -m tilemap_editor.app", pty=True)
