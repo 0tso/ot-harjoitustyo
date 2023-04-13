@@ -1,8 +1,7 @@
 import thorpy
-from . import manager, file_menu, tile_menu
 
-menu_functions  = [file_menu.create, tile_menu.create]
-menu_boxes      = [None, None]
+menu_functions  = []
+menu_boxes      = []
 
 # position as from the top left corner
 MAIN_VIEW_POSITION = (10, 10)
@@ -12,7 +11,7 @@ active_menu = 2 # 0 = file, 1 = tile, 2 = minimized
 def update_menu():
     global menu_box
 
-    thorpy.store(menu_box, mode="v", gap=5, align="left")
+    thorpy.store(menu_box, mode="v", gap=5, align="left", margin=5)
     menu_box.fit_children()
 
 def open_menu(id: int):
@@ -24,7 +23,7 @@ def open_menu(id: int):
     minimize()
     active_menu = id
 
-    width = menu_box.get_size()[0] - manager.DEFAULT_MARGIN * 2
+    width = menu_box.get_size()[0] - 10
     box = menu_functions[id](width)
     menu_boxes[id] = box
     menu_box.add_element(box)
@@ -41,13 +40,15 @@ def minimize():
     active_menu = 2
     update_menu()
 
-def create():
-    global menu_box
+# list format: [(name, function), ...]
+def create(menus: list):
+    global menu_box, menu_functions, menu_boxes
 
-    file_menu_button    = thorpy.make_button("File", func=open_menu, params={"id": 0})
-    tile_menu_button    = thorpy.make_button("Tiles", func=open_menu, params={"id": 1})
+    menu_functions = [function for name, function in menus]
+    menu_buttons = [thorpy.make_button(name, func=open_menu, params={"id": i}) for i, (name, function) in enumerate(menus)]
+    menu_boxes = [None] * len(menus)
     minimize_button     = thorpy.make_button("Minimize", func=minimize)
-    menu_buttons_group  = thorpy.make_group([file_menu_button, tile_menu_button, minimize_button], mode="h")
+    menu_buttons_group  = thorpy.make_group(menu_buttons + [minimize_button], mode="h")
 
     menu_box = thorpy.Box(elements=[menu_buttons_group])
     update_menu()
