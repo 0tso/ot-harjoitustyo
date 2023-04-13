@@ -1,16 +1,11 @@
 import thorpy
-import tkinter
-import tkinter.filedialog
+from . import file_browser
 from ..io import map_loader
 
-def open_file_browser():
-    tk = tkinter.Tk()
-    tk.withdraw()
-    file_path = tkinter.filedialog.askopenfilename(parent=tk)
-    tk.destroy()
+def open_file_browser(directory=False):
+    file_path = file_browser.open()
     map_loader.load_from_path(file_path)
     opened_text.set_text("File: " + map_loader.current_file_name)
-    opened_text.scale_to_text()
 
 def create(width):
     global opened_text
