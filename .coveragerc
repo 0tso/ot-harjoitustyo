@@ -1,0 +1,3 @@
+[run]
+source = tilemap_editor
+omit = tilemap_editor/**/__init__.py, tilemap_editor/tests/**

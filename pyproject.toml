@@ -11,6 +11,10 @@ pygame = "^2.3.0"
 invoke = "^2.0.0"
 thorpy = "^1.8.1"
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.1"
+coverage = "^7.2.3"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
