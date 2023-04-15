@@ -1,6 +1,7 @@
 import tkinter
 import tkinter.filedialog
 
+
 def open(directory=False):
     tk = tkinter.Tk()
     tk.withdraw()

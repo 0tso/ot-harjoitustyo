@@ -5,6 +5,7 @@ IMAGE_FORMATS = [".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp", ".raw"]
 current_dir_path = ""
 current_dir_tiles = []
 
+
 def load(directory_path=None):
     global current_dir_path
 
@@ -18,5 +19,5 @@ def load(directory_path=None):
             if os.path.isfile(file_path):
                 if file_extension in IMAGE_FORMATS:
                     current_dir_tiles.append(file_path)
-    
+
     return current_dir_tiles
