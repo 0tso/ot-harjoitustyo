@@ -8,21 +8,21 @@ thorpy.style.FONT_SIZE = 15
 thorpy.style.MARGINS = (DEFAULT_MARGIN, DEFAULT_MARGIN, DEFAULT_MARGIN, DEFAULT_MARGIN)
 
 def init():
-    global menu
+    global _menu
 
     box = main_menu.create([("File", file_menu.create), ("Tiles", tile_menu.create)])
-    menu = thorpy.Menu(elements=[box])
-    thorpy.miscgui.functions.set_current_menu(menu)
+    _menu = thorpy.Menu(elements=[box])
+    thorpy.miscgui.functions.set_current_menu(_menu)
 
 def process_event(event):
-    menu.react(event)
+    _menu.react(event)
 
 def blit():
-    for e in menu.get_population():
+    for e in _menu.get_population():
         e.blit()
 
 def add_element(element):
-    menu.add_to_population(element)
+    _menu.add_to_population(element)
 
 def remove_element(element):
-    menu.remove_from_population(element)
+    _menu.remove_from_population(element)

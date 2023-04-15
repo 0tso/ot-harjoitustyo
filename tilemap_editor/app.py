@@ -1,7 +1,7 @@
-import pygame
 import time
+import pygame
 from . import window, gui
-from .gui import manager
+import tilemap_editor.gui.manager
 
 TICK_RATE = 144
 
@@ -26,13 +26,10 @@ while running:
             running = False
             break
         gui.manager.process_event(event)
-    
+
     # drawing
     window.clear()
-    
     gui.manager.blit()
-
     window.blit()
-
 
 pygame.quit()

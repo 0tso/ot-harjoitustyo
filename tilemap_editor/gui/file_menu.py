@@ -2,7 +2,7 @@ import thorpy
 from . import file_browser
 from ..io import map_loader
 
-def open_file_browser(directory=False):
+def open_file_browser():
     file_path = file_browser.open()
     if file_path:
         map_loader.load_from_path(file_path)
