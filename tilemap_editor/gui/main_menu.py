@@ -9,6 +9,9 @@ MAIN_VIEW_POSITION = (10, 10)
 
 active_menu = 2 # 0 = file, 1 = tile, 2 = minimized
 
+def reload():
+    open_menu(active_menu)
+
 def update_menu():
     global menu_box
 
@@ -17,9 +20,6 @@ def update_menu():
 
 def open_menu(id: int):
     global menu_box, active_menu
-
-    if active_menu == id:
-        return
     
     minimize()
     active_menu = id
