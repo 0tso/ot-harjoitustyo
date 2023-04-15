@@ -7,3 +7,4 @@
 | 11.4| 10h    | getting acquainted with pygame |
 | 12.4| 10h    | learning thorpy, creating initial project structure and basic menus |
 | 13.4| 7h     | developing menus further |
+| 15.4| 3h     | gui work, started testing, code formatting |
