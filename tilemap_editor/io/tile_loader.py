@@ -5,7 +5,7 @@ import os
 tiles = {}
 
 # size as a single integer: the width and height of the tile in pixels
-def get(tile, size=None):
+def get(tile, size=None) -> pygame.Surface:
 
     if (tile, size) not in tiles:
         if size == None:
@@ -19,7 +19,7 @@ def get(tile, size=None):
     return tiles[(tile, size)]
 
 
-def get_tile_name(tile):
+def get_tile_name(tile) -> str:
     filename_full = os.path.basename(tile)
     filename, file_ext = os.path.splitext(filename_full)
     return filename

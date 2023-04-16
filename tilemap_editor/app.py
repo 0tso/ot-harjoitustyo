@@ -2,12 +2,14 @@ import time
 import pygame
 from . import window, gui
 import tilemap_editor.gui.manager
+from .io.editing_hid import EditingHID
 
 TICK_RATE = 144
 
 pygame.init()
 window.init()
 gui.manager.init()
+hid = EditingHID()
 
 clock = pygame.time.Clock()
 running = True
@@ -26,6 +28,7 @@ while running:
             running = False
             break
         gui.manager.process_event(event)
+        hid.process_event(event)
 
     # drawing
     window.clear()

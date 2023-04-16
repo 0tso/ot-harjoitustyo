@@ -13,8 +13,8 @@ def set_selected_tile(tile):
 def add_tiles(tiles):
     global tiles_box, menu_width
 
-    tile_size = (menu_width - (TILES_PER_ROW + 1)
-                 * TILE_MARGIN) / TILES_PER_ROW
+    tile_size = (menu_width -
+                 (TILES_PER_ROW + 1) * TILE_MARGIN) / TILES_PER_ROW
     current_row = []
 
     def add_row():
