@@ -25,3 +25,8 @@ class EditingHID:
         for key, movement in MOVEMENT_MAPPING.items():
             if keys[key]:
                 camera.get_current().move(movement)
+
+        if keys[pygame.K_PAGEDOWN]:
+            camera.get_current().change_zoom(1)
+        if keys[pygame.K_PAGEUP]:
+            camera.get_current().change_zoom(-1)

@@ -1,22 +1,22 @@
 import pygame
 import os
 
-# (tile_id=path, pixel_size) : pygame.Surface
-tiles = {}
+# tile_id : pygame.Surface
+_tiles = {}
+_scaled = {}
 
 # size as a single integer: the width and height of the tile in pixels
 def get(tile, size=None) -> pygame.Surface:
 
-    if (tile, size) not in tiles:
-        if size == None:
-            tiles[(tile, size)] = pygame.image.load(tile).convert_alpha()
-        else:
-            original = get(tile)
-            # assuming that the scale()-function creates a new Surface
-            new = pygame.transform.scale(original, (size, size))
-            tiles[(tile, size)] = new
+    if tile not in _tiles:
+        _tiles[tile] = pygame.image.load(tile).convert_alpha()
+    
+    if size is not None:
+        if (tile not in _scaled) or (_scaled[tile].get_rect().width != size):
+            _scaled[tile] = pygame.transform.scale(_tiles[tile], (size, size))
+        return _scaled[tile]
 
-    return tiles[(tile, size)]
+    return _tiles[(tile, size)]
 
 
 def get_tile_name(tile) -> str:
