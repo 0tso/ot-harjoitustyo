@@ -32,11 +32,11 @@ def blit():
     horizontal_tile_amount = math.ceil(window.WINDOW_WIDTH / TILE_SIZE) + 1
     min_x = math.floor(cam.x / TILE_SIZE)
     min_y = math.floor(cam.y / TILE_SIZE)
-    tiles = _current_map.get_tiles(min_x, min_y, vertical_tile_amount, horizontal_tile_amount)
+    tiles = _current_map.get_tiles(min_x, min_y, horizontal_tile_amount, vertical_tile_amount)
     for i, tile_id in enumerate(tiles):
         if tile_id != None:
-            x_i = i % vertical_tile_amount
-            y_i = i // vertical_tile_amount
+            x_i = min_x + i % horizontal_tile_amount
+            y_i = min_y + i // horizontal_tile_amount
             x = x_i * TILE_SIZE - cam.x
             y = y_i * TILE_SIZE - cam.y
             tile.blit_at(tile_id, (x, y), TILE_SIZE)
