@@ -1,6 +1,7 @@
 import thorpy
 import thorpy.miscgui.functions
 from . import main_menu, file_menu, tile_menu
+from pygame import Rect
 
 DEFAULT_MARGIN = 5
 
@@ -33,3 +34,10 @@ def add_element(element):
 
 def remove_element(element):
     _menu.remove_from_population(element)
+
+
+def get_ui_rects() -> list[Rect]:
+    rects = []
+    for e in _menu.get_population():
+        rects.append(e.get_rect())
+    return rects

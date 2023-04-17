@@ -29,6 +29,7 @@ while running:
             running = False
             break
         gui.manager.process_event(event)
+        hid.process_event(event)
 
     hid.process_input()
 

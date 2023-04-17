@@ -41,3 +41,6 @@ def blit():
             x = x_i * tile_size - cam.x
             y = y_i * tile_size - cam.y
             tile.blit_at(tile_id, (x, y), tile_size)
+
+def mouse_event(x, y, buttons: list[bool]):
+    pass
