@@ -3,6 +3,7 @@ import pygame
 from . import window, gui
 import tilemap_editor.gui.manager
 from .io.editing_hid import EditingHID
+from .data import view
 
 TICK_RATE = 144
 
@@ -32,7 +33,8 @@ while running:
 
     # drawing
     window.clear()
+    view.blit()
     gui.manager.blit()
-    window.blit()
+    window.refresh()
 
 pygame.quit()
