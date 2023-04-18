@@ -7,12 +7,11 @@ from .. import window
 from . import tile
 
 DEFAULT_TILE_SIZE = 50
-ZOOM_SIZE_MULTIPLIER = 10
 
 _current_map = Map()
 _current_map_path = ""
 _current_tile = None
-
+camera.set_current(camera.Camera(movement_speed=5, zoom_speed=0.01, min_zoom=-4, zoom_scale=2))
 
 def load_map(file_path: str):
     global _current_map, _current_map_path
@@ -36,7 +35,7 @@ def set_current_selected_tile(tile_id):
 
 def blit():
     cam = camera.get_current()
-    tile_size = DEFAULT_TILE_SIZE + cam.zoom * ZOOM_SIZE_MULTIPLIER
+    tile_size = DEFAULT_TILE_SIZE * cam.get_zoom_factor()
     vertical_tile_amount = math.ceil(window.WINDOW_HEIGHT / tile_size) + 1
     horizontal_tile_amount = math.ceil(window.WINDOW_WIDTH / tile_size) + 1
     min_x = math.floor(cam.x / tile_size)
@@ -55,7 +54,7 @@ def blit():
 def _tile_coords_from_pos(pos: tuple[float]) -> tuple[int]:
     pos_x, pos_y = pos
     cam = camera.get_current()
-    tile_size = DEFAULT_TILE_SIZE + cam.zoom * ZOOM_SIZE_MULTIPLIER
+    tile_size = DEFAULT_TILE_SIZE * cam.get_zoom_factor()
     min_x = math.floor(cam.x / tile_size)
     min_y = math.floor(cam.y / tile_size)
 

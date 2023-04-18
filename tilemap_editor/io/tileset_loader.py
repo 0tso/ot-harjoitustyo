@@ -1,6 +1,7 @@
 import os
 
 IMAGE_FORMATS = [".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp", ".raw"]
+DEFAULT_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "..", "assets")
 
 current_dir_path = ""
 current_dir_tiles = []
@@ -21,3 +22,5 @@ def load(directory_path=None):
                     current_dir_tiles.append(file_path)
 
     return current_dir_tiles
+
+load(DEFAULT_DIR)
