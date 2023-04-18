@@ -10,3 +10,6 @@
 | 15.4| 3h     | gui work, started testing, code formatting |
 | 16.4| 5h     | started establishing the class structure for editing maps |
 | 17.4| 4h     | map viewing class structure finished, keyboard input |
+| 18.4| 3h     | map editing (tile placing) functionality finished |
+
+Sum of hours: 49
