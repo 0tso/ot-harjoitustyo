@@ -1,14 +1,14 @@
 import thorpy
 from ..io import tileset_loader, tile_loader
+from ..data import view
 from . import file_browser, main_menu
 
 TILES_PER_ROW = 3
 TILE_MARGIN = 5
 
 
-def set_selected_tile(tile):
-    print(f"tile '{tile}' selected!")
-
+def set_selected_tile(tile_id):
+    view.set_current_selected_tile(tile_id)
 
 def add_tiles(tiles):
     global tiles_box, menu_width
@@ -25,7 +25,7 @@ def add_tiles(tiles):
         img = tile_loader.get(tile, tile_size)
         btn = thorpy.make_image_button(img_normal=img)
         btn.user_func = set_selected_tile
-        btn.user_params = {"tile": tile}
+        btn.user_params = {"tile_id": tile}
         current_row.append(btn)
 
         if len(current_row) == TILES_PER_ROW:
