@@ -17,6 +17,7 @@ MOVEMENT_MAPPING = {
     pygame.K_RIGHT: (1, 0),
 }
 
+
 def inside_gui(pos: tuple[float]) -> bool:
     gui_rects = manager.get_ui_rects()
     for rect in gui_rects:
@@ -28,7 +29,7 @@ def inside_gui(pos: tuple[float]) -> bool:
 class EditingHID:
     def __init__(self):
         pass
-    
+
     def process_input(self):
         keys = pygame.key.get_pressed()
         for key, movement in MOVEMENT_MAPPING.items():
@@ -39,7 +40,7 @@ class EditingHID:
             camera.get_current().change_zoom(1)
         if keys[pygame.K_PAGEUP]:
             camera.get_current().change_zoom(-1)
-    
+
     def process_event(self, event: pygame.event.Event):
         if event.type == pygame.MOUSEMOTION:
             if not inside_gui(event.pos):

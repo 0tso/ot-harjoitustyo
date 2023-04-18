@@ -10,6 +10,7 @@ TILE_MARGIN = 5
 def set_selected_tile(tile_id):
     view.set_current_selected_tile(tile_id)
 
+
 def add_tiles(tiles):
     global tiles_box, menu_width
 

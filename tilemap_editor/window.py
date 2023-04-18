@@ -22,5 +22,6 @@ def clear():
 def refresh():
     pygame.display.flip()
 
+
 def blit(surface: pygame.Surface, pos: tuple):
     _screen.blit(surface, pos)

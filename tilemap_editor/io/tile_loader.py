@@ -10,7 +10,7 @@ def get(tile, size=None) -> pygame.Surface:
 
     if tile not in _tiles:
         _tiles[tile] = pygame.image.load(tile).convert_alpha()
-    
+
     if size is not None:
         if (tile not in _scaled) or (_scaled[tile].get_rect().width != size):
             _scaled[tile] = pygame.transform.scale(_tiles[tile], (size, size))
