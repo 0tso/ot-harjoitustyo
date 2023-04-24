@@ -22,6 +22,10 @@ def load_map(file_path: str):
     _current_map = Map(tiles)
 
 
+def save_current_map(file_path: str):
+    map_loader.save_to_path(_current_map.tiles, file_path)
+
+
 def get_current_map_name():
     name = os.path.basename(_current_map_path)
     return name

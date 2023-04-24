@@ -11,5 +11,6 @@
 | 16.4| 5h     | started establishing the class structure for editing maps |
 | 17.4| 4h     | map viewing class structure finished, keyboard input |
 | 18.4| 3h     | map editing (tile placing) functionality finished |
+| 24.4| 3h     | map saving and loading functionality |
 
-Sum of hours: 49
+Sum of hours: 52

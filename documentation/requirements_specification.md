@@ -10,8 +10,8 @@ An application for creating, saving and inspecting 2D tilemaps (maps composed of
 - [x] Select a tile (a 2D square of a fixed size) from a list of available tiles (loaded from a specific directory relative to the application's path)
 - [x] Add the selected tile to a specific location with integer coordinates within the map
 - [x] Replace old tiles
-- [ ] Save the map file
-- [ ] Open and start editing a map file by inputting a filename or otherwise selecting a file
+- [x] Save the map file
+- [x] Open and start editing a map file by inputting a filename or otherwise selecting a file
 
 ## Additional functionality
 
