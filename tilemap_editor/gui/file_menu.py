@@ -12,7 +12,7 @@ def open_file_browser():
 def save_file():
     file_path = file_browser.open(save=True)
     if file_path:
-        view.save_current_map(file_path)
+        view.save_map_to_path(file_path)
 
 
 def create(menu_width):

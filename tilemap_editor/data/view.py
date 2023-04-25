@@ -2,6 +2,7 @@ import os
 import math
 from .map import Map
 from ..io import map_loader
+from ..gui import file_menu
 from .. import camera
 from .. import window
 from . import tile
@@ -22,8 +23,16 @@ def load_map(file_path: str):
     _current_map = Map(tiles)
 
 
-def save_current_map(file_path: str):
+def save_map_to_path(file_path: str):
+    global _current_map_path
     map_loader.save_to_path(_current_map.tiles, file_path)
+    _current_map_path = file_path
+
+def save_map():
+    if _current_map_path != "":
+        save_map_to_path(_current_map_path)
+    else:
+        file_menu.save_file()
 
 
 def get_current_map_name():

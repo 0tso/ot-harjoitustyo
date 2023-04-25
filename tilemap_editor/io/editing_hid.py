@@ -2,6 +2,7 @@ import pygame
 from .. import camera
 from ..data import view
 from ..gui import manager
+from .keymapping import KeyMapping
 
 MOVEMENT_MAPPING = {
     # WASD
@@ -17,6 +18,13 @@ MOVEMENT_MAPPING = {
     pygame.K_RIGHT: (1, 0),
 }
 
+KEYMAPPINGS = [
+    KeyMapping([pygame.K_PAGEDOWN], camera.get_current().change_zoom, func_params={"change": 1}, trigger_once=False),
+    KeyMapping([pygame.K_PAGEUP], camera.get_current().change_zoom, func_params={"change": -1}, trigger_once=False),
+    KeyMapping([pygame.K_LCTRL, pygame.K_s], view.save_map),
+    KeyMapping([pygame.K_LCTRL, pygame.K_z], None),
+    KeyMapping([pygame.K_LCTRL, pygame.K_LSHIFT, pygame.K_z], None),
+]
 
 def inside_gui(pos: tuple[float]) -> bool:
     gui_rects = manager.get_ui_rects()
@@ -33,13 +41,11 @@ class EditingHID:
     def process_input(self):
         keys = pygame.key.get_pressed()
         for key, movement in MOVEMENT_MAPPING.items():
-            if keys[key]:
+            if not keys[pygame.K_LCTRL] and keys[key]:
                 camera.get_current().move(movement)
-
-        if keys[pygame.K_PAGEDOWN]:
-            camera.get_current().change_zoom(1)
-        if keys[pygame.K_PAGEUP]:
-            camera.get_current().change_zoom(-1)
+        
+        for mapping in KEYMAPPINGS:
+            mapping.update(keys)
 
     def process_event(self, event: pygame.event.Event):
         if event.type == pygame.MOUSEMOTION:
