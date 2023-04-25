@@ -2,7 +2,7 @@ import os
 import math
 from .map import Map
 from ..io import map_loader
-from ..gui import file_menu
+from ..gui import file_browser
 from .. import camera
 from .. import window
 from . import tile
@@ -11,7 +11,6 @@ DEFAULT_TILE_SIZE = 50
 
 _current_map = Map()
 _current_map_path = ""
-_current_tile = None
 camera.set_current(camera.Camera(movement_speed=5, zoom_speed=0.01, min_zoom=-4, zoom_scale=2))
 
 def load_map(file_path: str):
@@ -32,18 +31,14 @@ def save_map():
     if _current_map_path != "":
         save_map_to_path(_current_map_path)
     else:
-        file_menu.save_file()
+        file_path = file_browser.open(save=True)
+        if file_path:
+            save_map_to_path(file_path)
 
 
 def get_current_map_name():
     name = os.path.basename(_current_map_path)
     return name
-
-
-def set_current_selected_tile(tile_id):
-    global _current_tile
-
-    _current_tile = tile_id
 
 
 def blit():
@@ -64,7 +59,7 @@ def blit():
             tile.blit_at(tile_id, (x, y), tile_size)
 
 
-def _tile_coords_from_pos(pos: tuple[float]) -> tuple[int]:
+def tile_coords_from_screen_pos(pos: tuple[float]) -> tuple[int]:
     pos_x, pos_y = pos
     cam = camera.get_current()
     tile_size = DEFAULT_TILE_SIZE * cam.get_zoom_factor()
@@ -76,9 +71,8 @@ def _tile_coords_from_pos(pos: tuple[float]) -> tuple[int]:
 
     return (min_x + dist_x // tile_size, min_y + dist_y // tile_size)
 
+def get_tile(pos: tuple[int, int]):
+    return _current_map.get_tile(pos)
 
-def mouse_event(pos, buttons: list[bool]):
-    left, mid, right = buttons
-    x, y = _tile_coords_from_pos(pos)
-    if (_current_tile is not None) and left:
-        _current_map.set_tile(x, y, _current_tile)
+def set_tile(pos: tuple[int, int], tile_id):
+    _current_map.set_tile(pos, tile_id)

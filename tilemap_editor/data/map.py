@@ -3,10 +3,14 @@ class Map:
         self.tiles = tiles
 
     def get_tiles(self, x, y, width, height):
-        return [self.get_tile(x+X, y+Y) for Y in range(height) for X in range(width)]
+        return [self.get_tile((x+X, y+Y)) for Y in range(height) for X in range(width)]
 
-    def get_tile(self, x, y):
-        return self.tiles.get((x, y), None)
+    def get_tile(self, pos):
+        return self.tiles.get(pos, None)
 
-    def set_tile(self, x, y, tile_id):
-        self.tiles[(x, y)] = tile_id
+    def set_tile(self, pos, tile_id):
+        if tile_id == None:
+            if pos in self.tiles:
+                del self.tiles[pos]
+        else:
+            self.tiles[pos] = tile_id

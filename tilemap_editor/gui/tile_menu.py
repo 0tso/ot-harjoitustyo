@@ -1,6 +1,6 @@
 import thorpy
 from ..io import tileset_loader, tile_loader
-from ..data import view
+from ..data import editor
 from . import file_browser, main_menu
 
 TILES_PER_ROW = 3
@@ -8,7 +8,7 @@ TILE_MARGIN = 5
 
 
 def set_selected_tile(tile_id):
-    view.set_current_selected_tile(tile_id)
+    editor.set_current_selected_tile(tile_id)
 
 def add_tiles(tiles):
     global tiles_box, menu_width
