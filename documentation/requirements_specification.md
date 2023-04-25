@@ -15,6 +15,7 @@ An application for creating, saving and inspecting 2D tilemaps (maps composed of
 
 ## Additional functionality
 
+- [ ] Undo an edit using Ctrl+Z
 - [ ] Copy-paste tiles and combinations (patterns) of tiles over large areas instead of single locations
 - [ ] Add tiles of different (both smaller and larger) dimensions
 - [ ] Add tiles to non-integer, sub-tile positions
