@@ -12,5 +12,6 @@
 | 17.4| 4h     | map viewing class structure finished, keyboard input |
 | 18.4| 3h     | map editing (tile placing) functionality finished |
 | 24.4| 3h     | map saving and loading functionality |
+| 25.4| 5h     | architecture restructuring, undo & redo |
 
-Sum of hours: 52
+Sum of hours: 57
