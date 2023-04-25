@@ -1,4 +1,3 @@
-import pygame
 from ..io import tile_loader
 from .. import window
 
