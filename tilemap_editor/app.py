@@ -30,6 +30,7 @@ while running:
             break
         gui.manager.process_event(event)
         hid.process_event(event)
+        window.process_event(event)
 
     hid.process_input()
 
