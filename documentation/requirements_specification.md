@@ -15,10 +15,10 @@ An application for creating, saving and inspecting 2D tilemaps (maps composed of
 
 ## Additional functionality
 
+- [x] Change the directory from which to load the available tiles
 - [x] Undo an edit using Ctrl+Z
 - [x] Redo an edit using Ctrl+Y
 - [ ] Copy-paste tiles and combinations (patterns) of tiles over large areas instead of single locations
 - [ ] Add tiles of different (both smaller and larger) dimensions
 - [ ] Add tiles to non-integer, sub-tile positions
-- [ ] Change the directory from which to load the available tiles
 - [ ] Instead of single tiles, select "templates" (combinations of tiles loaded as maps from a specific directory or a filename inputted) to be added into the map
