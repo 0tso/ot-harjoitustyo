@@ -13,5 +13,6 @@
 | 18.4| 3h     | map editing (tile placing) functionality finished |
 | 24.4| 3h     | map saving and loading functionality |
 | 25.4| 5h     | architecture restructuring, undo & redo |
+| 2.5 | 4h     | undo & redo finished, documentation |
 
-Sum of hours: 57
+Sum of hours: 61
