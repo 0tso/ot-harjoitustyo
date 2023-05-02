@@ -23,7 +23,7 @@ KEYMAPPINGS = [
     KeyMapping([pygame.K_PAGEUP], camera.get_current().change_zoom, func_params={"change": -1}, trigger_once=False),
     KeyMapping([pygame.K_LCTRL, pygame.K_s], view.save_map),
     KeyMapping([pygame.K_LCTRL, pygame.K_z], editor.undo),
-    KeyMapping([pygame.K_LCTRL, pygame.K_LSHIFT, pygame.K_z], editor.redo),
+    KeyMapping([pygame.K_LCTRL, pygame.K_y], editor.redo),
 ]
 
 def inside_gui(pos: tuple[float]) -> bool:

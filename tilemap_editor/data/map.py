@@ -9,7 +9,7 @@ class Map:
         return self.tiles.get(pos, None)
 
     def set_tile(self, pos, tile_id):
-        if tile_id == None:
+        if tile_id is None:
             if pos in self.tiles:
                 del self.tiles[pos]
         else:
