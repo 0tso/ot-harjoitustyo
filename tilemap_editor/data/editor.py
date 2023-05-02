@@ -5,12 +5,20 @@ _changes = []
 _current_change_batch = []
 _undo_amount = 0
 
+
 def set_current_selected_tile(tile_id):
     global _current_tile
 
     _current_tile = tile_id
 
+
 def mouse_event(pos, buttons: list[bool]):
+    """Process a mouse event.
+
+    Args:
+        pos: the position of the mouse in pixels, top left being (0, 0).
+        buttons: the statuses of the 3 mouse buttons (left, middle, right) as booleans, denoting whether they are pressed.
+    """
     global _undo_amount
 
     left, mid, right = buttons
@@ -38,6 +46,7 @@ def undo():
         _undo_amount += 1
         for (pos, new, old) in _changes[-_undo_amount]:
             view.set_tile(pos, old)
+
 
 def redo():
     global _undo_amount

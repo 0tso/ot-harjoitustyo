@@ -2,9 +2,11 @@ import unittest
 from .. import camera
 from ..camera import Camera
 
+
 class TestCamera(unittest.TestCase):
     def setUp(self) -> None:
-        self.cam = Camera(movement_speed=2, zoom_speed=0.5, min_zoom=-5, zoom_scale=2)
+        self.cam = Camera(movement_speed=2, zoom_speed=0.5,
+                          max_zoom=-5, zoom_scale=2)
 
     def test_movement(self):
         self.cam.move((-1, 0))

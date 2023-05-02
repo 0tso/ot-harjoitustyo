@@ -16,4 +16,6 @@
 - Map saving and loading
 
 ## Week 6
+- Map editing functionality split from view.py into a new module, editor.py
 - Undo & redo using Ctrl+Z and Ctrl+Y
+- Keymapping architecture improved

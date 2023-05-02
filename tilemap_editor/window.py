@@ -11,7 +11,8 @@ SCREEN_CLEAR_COLOR = (255, 255, 255)
 def init():
     global _screen
 
-    _screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.RESIZABLE)
+    _screen = pygame.display.set_mode(
+        (WINDOW_WIDTH, WINDOW_HEIGHT), pygame.RESIZABLE)
     pygame.display.set_caption(WINDOW_TITLE)
 
 
@@ -21,6 +22,7 @@ def process_event(event: pygame.event.Event):
     if event.type == pygame.VIDEORESIZE:
         WINDOW_WIDTH = event.w
         WINDOW_HEIGHT = event.h
+
 
 def clear():
     _screen.fill(SCREEN_CLEAR_COLOR)

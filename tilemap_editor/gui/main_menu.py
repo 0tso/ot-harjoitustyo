@@ -47,6 +47,8 @@ def minimize():
     update_menu()
 
 # list format: [(name, function), ...]
+
+
 def create(menus: list):
     global menu_box, _menu_functions, _menu_boxes
 

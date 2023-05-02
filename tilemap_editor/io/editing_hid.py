@@ -19,22 +19,35 @@ MOVEMENT_MAPPING = {
 }
 
 KEYMAPPINGS = [
-    KeyMapping([pygame.K_PAGEDOWN], camera.get_current().change_zoom, func_params={"change": 1}, trigger_once=False),
-    KeyMapping([pygame.K_PAGEUP], camera.get_current().change_zoom, func_params={"change": -1}, trigger_once=False),
+    KeyMapping([pygame.K_PAGEDOWN], camera.get_current().change_zoom,
+               func_params={"change": 1}, trigger_once=False),
+    KeyMapping([pygame.K_PAGEUP], camera.get_current().change_zoom,
+               func_params={"change": -1}, trigger_once=False),
     KeyMapping([pygame.K_LCTRL, pygame.K_s], view.save_map),
     KeyMapping([pygame.K_LCTRL, pygame.K_z], editor.undo),
     KeyMapping([pygame.K_LCTRL, pygame.K_y], editor.redo),
 ]
 
-def inside_gui(pos: tuple[float]) -> bool:
+
+def is_inside_gui(pos: tuple[float]) -> bool:
+    """Determines whether or not a pixel position is within the GUI.
+
+    Args:
+        pos: the position as a tuple of integers, denoting pixel coordinates
+
+    Returns:
+        a boolean—whether or not the pixel is within GUI confines.
+    """
     gui_rects = manager.get_ui_rects()
     for rect in gui_rects:
         if rect.collidepoint(*pos):
             return True
     return False
 
-# HID = Human Interface Device
+
 class EditingHID:
+    """A Human Interface Device (HID) class, meant for input processing from HID devices such as a keyboard and a mouse."""
+
     def __init__(self):
         pass
 
@@ -43,15 +56,15 @@ class EditingHID:
         for key, movement in MOVEMENT_MAPPING.items():
             if not keys[pygame.K_LCTRL] and keys[key]:
                 camera.get_current().move(movement)
-        
+
         for mapping in KEYMAPPINGS:
             mapping.update(keys)
 
     def process_event(self, event: pygame.event.Event):
         if event.type == pygame.MOUSEMOTION:
-            if not inside_gui(event.pos):
+            if not is_inside_gui(event.pos):
                 editor.mouse_event(event.pos, [bool(x) for x in event.buttons])
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if not inside_gui(event.pos):
+            if not is_inside_gui(event.pos):
                 editor.mouse_event(event.pos, pygame.mouse.get_pressed())

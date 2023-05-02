@@ -1,6 +1,6 @@
 class Map:
-    def __init__(self, tiles={}):
-        self.tiles = tiles
+    def __init__(self, tiles=None):
+        self.tiles = {} if tiles is None else tiles
 
     def get_tiles(self, x, y, width, height):
         return [self.get_tile((x+X, y+Y)) for Y in range(height) for X in range(width)]
