@@ -12,10 +12,13 @@ flowchart LR
     gui ---> data
 ```
 
-* The top-level `tilemap_editor` package contains modules that manage the whole program, such as `app.py`, and modules that are extensively used in inter-package communication, such as `camera.py`.
-* The `data` package contains modules that deal with rendering, storing and modifying the tilemaps: the central pieces of the whole program, so to say.
-* The `io` ("Input/Output") package contains modules that deal with either interacting with the file system or with the human input coming into the system via, for example, keyboard and mouse.
-* The `gui` ("Graphical User Interface") package contains modules that handle the rest of the user interaction outside moving around and editing the tilemap.
+The top-level `tilemap_editor` package contains modules that manage the whole program, such as `app.py`, and modules that are extensively used in inter-package communication, such as `camera.py`.
+
+The `data` package contains modules that deal with rendering, storing and modifying the tilemaps: the central pieces of the whole program, so to say.
+
+The `io` ("Input/Output") package contains modules that deal either with file system interaction or with the human input coming into the system through a keyboard and a mouse.
+
+The `gui` ("Graphical User Interface") package contains modules that handle the rest of the user interaction outside moving around and editing the tilemap.
 
 ## Module & class interaction
 
@@ -30,9 +33,11 @@ classDiagram
 ```
 _Above a simplified representation of the core module interaction._
 
-- The `EditingHID` (singleton) class manages the commands related to moving around and editing the map via the user's keyboard & mouse and relies this information forward (mainly to the `Camera` (singleton) class and the `editor` module).
-- The `editor` module manages and stores the individual changes (and undos + redos) made by the user to the tilemap and relies those to the `view` module.
-- The `view` module manages and saves the `Map`(s) that the user sees: the user's "view", so to speak. Drawing is done based on the information (position in the world) from the `Camera` singleton.
+The `EditingHID` (singleton) class manages the commands related to moving around and editing the map via the user's keyboard & mouse and relies this information forward (mainly to the `Camera` (singleton) class and the `editor` module).
+
+The `editor` module manages and stores the individual changes (and undos + redos) made by the user to the tilemap and relies those to the `view` module.
+
+The `view` module manages and saves the `Map`(s) that the user sees: the user's "view", so to speak. Drawing is done based on the information (position in the world) from the `Camera` singleton.
 
 
 ## Example sequence diagram of module interaction
@@ -47,10 +52,11 @@ sequenceDiagram
     file_menu ->> view: load_map(file_path)
     view ->> map_loader: load_from_path(file_path)
     map_loader -->> view: tiles
-    Note over view: saves tiles into _current_map
+    view ->> Map: __init__(tiles)
+    Map -->> view: _current_map
 ```
 
-And the following sequence diagram shows what happens whenever the user clicks on a position on the screen:
+And the following sequence diagram shows what happens whenever the user clicks on a position within the view:
 
 ```mermaid
 sequenceDiagram
