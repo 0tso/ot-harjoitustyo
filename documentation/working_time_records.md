@@ -14,5 +14,6 @@
 | 24.4| 3h     | map saving and loading functionality |
 | 25.4| 5h     | architecture restructuring, undo & redo |
 | 2.5 | 4h     | undo & redo finished, documentation |
+| 8.5 | 2h     | documentation & architecture description |
 
-Sum of hours: 61
+Sum of hours: 63
