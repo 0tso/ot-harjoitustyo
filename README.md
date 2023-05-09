@@ -4,20 +4,25 @@ An editor for 2D tile-based maps.
 
 ## Documentation
 
-* [Requirements specification](./documentation/requirements_specification.md)
-* [Working time records](./documentation/working_time_records.md)
-* [Changelog](./documentation/changelog.md)
-* [Architecture](./documentation/architecture.md)
 * [Usage instructions](./documentation/usage_instructions.md)
+* [Architecture](./documentation/architecture.md)
+* [Requirements specification](./documentation/requirements_specification.md)
+* [Changelog](./documentation/changelog.md)
+* [Working time records](./documentation/working_time_records.md)
 
 ## Installation
 
-Install the program using the following command:
+1. Clone the repository:
+```bash
+git clone git@github.com:0tso/tilemap-editor.git
+cd tilemap-editor
+```
+2. Install the necessary dependencies using `poetry`:
 ```bash
 poetry install
 ```
 
-## Usage
+## Startup & commands
 
 You can start the program using:
 ```bash
@@ -33,3 +38,5 @@ or generate a coverage report:
 ```bash
 poetry run invoke coverage-report
 ```
+
+For more in-depth usage information, see the [usage instructions](./documentation/usage_instructions.md).
