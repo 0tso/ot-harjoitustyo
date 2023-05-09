@@ -21,7 +21,7 @@ def create(menu_width):
 
     opened_text = thorpy.make_text("File: " + view.get_current_map_name())
     browse_files_button = thorpy.make_button(
-        "Browse files", func=open_file_browser)
+        "Load a map", func=open_file_browser)
 
     saved_changes_text = thorpy.make_text("No changes")
     save_button = thorpy.make_button("Save", func=save_file)
