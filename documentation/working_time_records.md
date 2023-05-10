@@ -15,5 +15,7 @@
 | 25.4| 5h     | architecture restructuring, undo & redo |
 | 2.5 | 4h     | undo & redo finished, documentation |
 | 8.5 | 2h     | documentation & architecture description |
+| 9.5 | 1h     | documentation & usage instructions |
+| 10.5| 4h     | writing tests, improving general program structure |
 
-Sum of hours: 63
+Sum of hours: 68
