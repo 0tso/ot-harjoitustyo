@@ -19,7 +19,7 @@ class KeyMapping:
 
     def update(self, pressed_keys):
         if all(pressed_keys[k] for k in self.keys):
-            if (not self.trigger_once) or (not self.pressed) or any(pressed_keys[k] for k in self.block):
+            if ((not self.trigger_once) or (not self.pressed)) and not any(pressed_keys[k] for k in self.block):
                 self.func(**self.func_params)
                 self.pressed = True
         else:

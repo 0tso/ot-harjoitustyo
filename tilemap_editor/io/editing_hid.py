@@ -4,25 +4,24 @@ from ..data import view, editor
 from ..gui import manager
 from .keymapping import KeyMapping
 
-MOVEMENT_MAPPING = {
+KEYMAPPINGS = [
+    # Movement
+
     # WASD
-    pygame.K_w: (0, -1),
-    pygame.K_s: (0, 1),
-    pygame.K_a: (-1, 0),
-    pygame.K_d: (1, 0),
+    KeyMapping([pygame.K_w], camera.get_current().move, func_params={"direction": (0, -1)}, trigger_once=False, block=[pygame.K_LCTRL]),
+    KeyMapping([pygame.K_s], camera.get_current().move, func_params={"direction": (0, 1)}, trigger_once=False, block=[pygame.K_LCTRL]),
+    KeyMapping([pygame.K_a], camera.get_current().move, func_params={"direction": (-1, 0)}, trigger_once=False, block=[pygame.K_LCTRL]),
+    KeyMapping([pygame.K_d], camera.get_current().move, func_params={"direction": (1, 0)}, trigger_once=False, block=[pygame.K_LCTRL]),
 
     # arrow keys
-    pygame.K_UP: (0, -1),
-    pygame.K_DOWN: (0, 1),
-    pygame.K_LEFT: (-1, 0),
-    pygame.K_RIGHT: (1, 0),
-}
+    KeyMapping([pygame.K_UP], camera.get_current().move, func_params={"direction": (0, -1)}, trigger_once=False, block=[pygame.K_LCTRL]),
+    KeyMapping([pygame.K_DOWN], camera.get_current().move, func_params={"direction": (0, 1)}, trigger_once=False, block=[pygame.K_LCTRL]),
+    KeyMapping([pygame.K_LEFT], camera.get_current().move, func_params={"direction": (-1, 0)}, trigger_once=False, block=[pygame.K_LCTRL]),
+    KeyMapping([pygame.K_RIGHT], camera.get_current().move, func_params={"direction": (1, 0)}, trigger_once=False, block=[pygame.K_LCTRL]),
 
-KEYMAPPINGS = [
-    KeyMapping([pygame.K_PAGEDOWN], camera.get_current().change_zoom,
-               func_params={"change": 1}, trigger_once=False),
-    KeyMapping([pygame.K_PAGEUP], camera.get_current().change_zoom,
-               func_params={"change": -1}, trigger_once=False),
+    # The rest
+    KeyMapping([pygame.K_PAGEDOWN], camera.get_current().change_zoom, func_params={"change": 1}, trigger_once=False),
+    KeyMapping([pygame.K_PAGEUP], camera.get_current().change_zoom, func_params={"change": -1}, trigger_once=False),
     KeyMapping([pygame.K_LCTRL, pygame.K_s], view.save_map),
     KeyMapping([pygame.K_LCTRL, pygame.K_z], editor.undo),
     KeyMapping([pygame.K_LCTRL, pygame.K_y], editor.redo),
@@ -48,23 +47,22 @@ def is_inside_gui(pos: tuple[float]) -> bool:
 class EditingHID:
     """A Human Interface Device (HID) class, meant for input processing from HID devices such as a keyboard and a mouse."""
 
-    def __init__(self):
-        pass
+    def __init__(self, keymappings, mouse_func):
+        self.keymappings = keymappings
+        self.mouse_func = mouse_func
 
     def process_input(self):
+        """Processes the keyboard input accumulated during the frame.
+        To be called once per frame."""
         keys = pygame.key.get_pressed()
-        for key, movement in MOVEMENT_MAPPING.items():
-            if not keys[pygame.K_LCTRL] and keys[key]:
-                camera.get_current().move(movement)
-
-        for mapping in KEYMAPPINGS:
+        for mapping in self.keymappings:
             mapping.update(keys)
 
     def process_event(self, event: pygame.event.Event):
         if event.type == pygame.MOUSEMOTION:
             if not is_inside_gui(event.pos):
-                editor.mouse_event(event.pos, [bool(x) for x in event.buttons])
+                self.mouse_func(event.pos, tuple([bool(x) for x in event.buttons]))
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if not is_inside_gui(event.pos):
-                editor.mouse_event(event.pos, pygame.mouse.get_pressed())
+                self.mouse_func(event.pos, pygame.mouse.get_pressed())

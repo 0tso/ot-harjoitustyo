@@ -12,7 +12,7 @@ def set_current_selected_tile(tile_id):
     _current_tile = tile_id
 
 
-def mouse_event(pos, buttons: list[bool]):
+def mouse_event(pos, buttons: tuple[bool, bool, bool]):
     """Process a mouse event.
 
     Args:
