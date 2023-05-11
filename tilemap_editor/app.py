@@ -1,7 +1,6 @@
 import time
 import pygame
 from . import window, gui
-import tilemap_editor.gui.manager
 from .io.editing_hid import KEYMAPPINGS, EditingHID
 from .data import view, editor
 

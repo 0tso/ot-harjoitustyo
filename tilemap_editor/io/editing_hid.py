@@ -61,7 +61,7 @@ class EditingHID:
     def process_event(self, event: pygame.event.Event):
         if event.type == pygame.MOUSEMOTION:
             if not is_inside_gui(event.pos):
-                self.mouse_func(event.pos, tuple([bool(x) for x in event.buttons]))
+                self.mouse_func(event.pos, (bool(x) for x in event.buttons))
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             if not is_inside_gui(event.pos):

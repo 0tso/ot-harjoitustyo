@@ -3,6 +3,7 @@ from ..data import editor
 from ..data import view
 from ..data.map import Map
 
+
 class TestEditor(unittest.TestCase):
     def setUp(self) -> None:
         self.tile_0_pixcoord = (0, 0)
@@ -15,7 +16,7 @@ class TestEditor(unittest.TestCase):
     def test_set_current_tile(self):
         editor.set_current_selected_tile(5)
         self.assertEqual(editor._current_tile, 5)
-    
+
     def test_mouse_event(self):
         editor.mouse_event(self.tile_0_pixcoord, (False, False, False))
         self.assertEqual(view.get_tile((0, 0)), None)
@@ -35,7 +36,7 @@ class TestEditor(unittest.TestCase):
         self.assertEqual(view.get_tile((1, 1)), 2)
         self.assertEqual(view.get_tile((1, 0)), 1)
         self.assertEqual(view.get_tile((2, 2)), None)
-    
+
     def test_undo_redo(self):
         editor.set_current_selected_tile(10)
         editor.mouse_event(self.tile_0_pixcoord, (True, False, False))

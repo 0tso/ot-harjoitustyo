@@ -12,15 +12,15 @@ def set_selected_tile(tile_id):
 
 
 def add_tiles(tiles):
-    global tiles_box, menu_width
+    global _tiles_box, _menu_width
 
-    tile_size = (menu_width -
+    tile_size = (_menu_width -
                  (TILES_PER_ROW + 1) * TILE_MARGIN) / TILES_PER_ROW
     current_row = []
 
     def add_row():
         group = thorpy.make_group(current_row)
-        tiles_box.append_element(group)
+        _tiles_box.append_element(group)
 
     for tile in tiles:
         img = tile_loader.get(tile, tile_size)
@@ -41,9 +41,9 @@ def add_tiles(tiles):
             current_row.append(e)
         add_row()
 
-    thorpy.store(tiles_box)
-    tiles_box.fit_children()
-    tiles_box.set_size((menu_width, None))
+    thorpy.store(_tiles_box)
+    _tiles_box.fit_children()
+    _tiles_box.set_size((_menu_width, None))
 
 
 def open_file_browser():
@@ -58,14 +58,14 @@ def open_file_browser():
 
 
 def create(width):
-    global dir_text, tiles_box, menu_width
+    global dir_text, _tiles_box, _menu_width
 
-    menu_width = width
+    _menu_width = width
     dir_text = thorpy.make_text(
         "Directory:\n" + ".." + tileset_loader.current_dir_path[-20:])
     browse_dirs_button = thorpy.make_button(
         "Browse directories", func=open_file_browser)
 
-    tiles_box = thorpy.Box(elements=[dir_text, browse_dirs_button])
+    _tiles_box = thorpy.Box(elements=[dir_text, browse_dirs_button])
     add_tiles(tileset_loader.load())
-    return tiles_box
+    return _tiles_box
