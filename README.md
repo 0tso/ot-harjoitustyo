@@ -8,6 +8,7 @@ An editor for 2D tile-based maps.
 * [Architecture](./documentation/architecture.md)
 * [Requirements specification](./documentation/requirements_specification.md)
 * [Changelog](./documentation/changelog.md)
+* [Testing](./documentation/testing.md)
 * [Working time records](./documentation/working_time_records.md)
 
 ## Installation

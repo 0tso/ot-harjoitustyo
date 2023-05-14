@@ -17,5 +17,6 @@
 | 8.5 | 2h     | documentation & architecture description |
 | 9.5 | 1h     | documentation & usage instructions |
 | 10.5| 4h     | writing tests, improving general program structure |
+| 14.5| 1h     | finishing touches |
 
-Sum of hours: 68
+Sum of hours: 69
